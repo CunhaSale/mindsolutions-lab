@@ -3,9 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const sprites = ["/dev-sprite-1.png", "/dev-sprite-2.png", "/dev-sprite-3.png", "/dev-sprite-4.png"];
 
-const agentNames = ["AGENT_01", "AGENT_02", "AGENT_03", "AGENT_04"];
-const agentRoles = ["Backend Ops", "Frontend Dev", "DevOps Lead", "AI Core"];
+const agentNames = [
+  "AGENT_01 // Prospecção de Leads",
+  "AGENT_02 // Financeiro & Backoffice",
+  "AGENT_03 // Pessoas & Experiência",
+  "AGENT_04 // Publicador de Conteúdo"
+];
+const agentRoles = ["Lead Prospector", "Finance & Back-Office", "People & Experience", "Content Publisher"];
 const agentStatuses = ["COMPILING", "DEPLOYING", "SCANNING", "LEARNING"];
+
+const agentDescriptions = [
+  "Identifica, qualifica e nutre leads em tempo real — pesquisando perfis, cruzando dados de mercado e entregando contatos prontos para abordagem comercial sem intervenção humana.",
+  "Automatiza conciliações, emissão de notas, controle de pagamentos e relatórios financeiros — eliminando retrabalho operacional e reduzindo erros em processos de rotina.",
+  "Gerencia onboarding, pesquisas de clima, comunicados internos e acompanhamento de performance — mantendo o colaborador conectado sem sobrecarregar o time de RH.",
+  "Gera, revisa e publica conteúdo automaticamente no blog ou portal — seguindo tom de voz, calendário editorial e SEO — sem a fila de aprovação travar a produção."
+];
 
 const logMessages = [
   ["GET /api/v1/deploy... 200 OK", "npm run build ████████ 100%", "Compiling modules... done", "Memory: 42MB / 512MB"],
@@ -52,6 +64,18 @@ const DevCard = ({ index, isAccelerated }: DevCardProps) => {
         </span>
       </div>
 
+      {/* Active indicator */}
+      <div className="absolute top-2 left-2 flex items-center gap-1.5">
+        <motion.div
+          className="w-2 h-2 bg-green-500 rounded-full"
+          animate={{ opacity: [1, 0.3, 1] }}
+          transition={{ repeat: Infinity, duration: isAccelerated ? 0.3 : 1, ease: "linear" }}
+        />
+        <span className="text-[10px] font-mono text-green-500 tracking-widest">
+          ACTIVE
+        </span>
+      </div>
+
       {/* Sprite with pixelated rendering */}
       <motion.div
         className="relative w-24 h-24 sm:w-32 sm:h-32 overflow-hidden"
@@ -76,9 +100,12 @@ const DevCard = ({ index, isAccelerated }: DevCardProps) => {
       {/* Agent info */}
       <div className="text-center">
         <p className="text-xs font-mono text-primary tracking-[0.2em]">
-          {agentNames[index]} // Active
+          {agentNames[index]}
         </p>
         <p className="text-[10px] font-mono text-muted-foreground mt-0.5">
+        <p className="text-[10px] font-mono text-muted-foreground mt-0.5 leading-relaxed">
+          {agentDescriptions[index]}
+        </p>
           {agentRoles[index]}
         </p>
       </div>
