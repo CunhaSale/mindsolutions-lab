@@ -119,8 +119,16 @@ const Main = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 font-mono text-[10px] text-muted-foreground text-center tracking-widest">
+        <div className="mt-12 font-mono text-[10px] text-muted-foreground text-center tracking-widest space-x-2">
           <span className="text-primary">●</span> Organic data: 12.4ms latency / 99.9% uptime / 4 agents active
+          <a
+            href="https://mindtechsolutions.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary underline-offset-2 hover:underline"
+          >
+            MindTech Solutions
+          </a>
         </div>
       </main>
 
