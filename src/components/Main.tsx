@@ -4,6 +4,7 @@ import DevRoom from "@/components/DevRoom";
 import ProgressBar from "@/components/ProgressBar";
 import SuccessModal from "@/components/SuccessModal";
 import StatsBar from "@/components/StatsBar";
+import { ExternalLink } from "lucide-react";
 
 const Main = () => {
   const [isDeploying, setIsDeploying] = useState(false);
@@ -125,9 +126,10 @@ const Main = () => {
             href="https://mindtechsolutions.vercel.app"
             target="_blank"
             rel="noreferrer"
-            className="text-primary underline-offset-2 hover:underline"
+            className="inline-flex items-center gap-1 text-primary underline-offset-2 hover:underline"
           >
-            MindTech Solutions
+            <span>MindTech Solutions</span>
+            <ExternalLink className="h-3.5 w-3.5" />
           </a>
         </div>
       </main>
